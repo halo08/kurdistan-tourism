@@ -1,4 +1,5 @@
 
+
 name: Build Kurdistan Tourism APK
 
 on:
@@ -21,14 +22,17 @@ jobs:
           channel: stable
 
       - name: Install dependencies
+        working-directory: mobile
         run: flutter pub get
 
       - name: Build APK
+        working-directory: mobile
         run: flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: kurdistan-tourism-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: mobile/build/app/outputs/flutter-apk/app-release.apk
+          
           
